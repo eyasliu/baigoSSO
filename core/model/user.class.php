@@ -37,25 +37,25 @@ class MODEL_USER {
             "user_id"               => "int NOT NULL AUTO_INCREMENT COMMENT 'ID'",
             "user_name"             => "varchar(30) NOT NULL COMMENT '用户名'",
             "user_mail"             => "varchar(300) NOT NULL COMMENT '邮箱'",
-            "user_contact"          => "varchar(3000) NOT NULL COMMENT '联系方式'",
-            "user_extend"           => "varchar(3000) NOT NULL COMMENT '扩展字段'",
+            "user_contact"          => "varchar(3000) COMMENT '联系方式'",
+            "user_extend"           => "varchar(3000) COMMENT '扩展字段'",
             "user_pass"             => "char(32) NOT NULL COMMENT '密码'",
             "user_nick"             => "varchar(30) NOT NULL COMMENT '昵称'",
             "user_status"           => "enum('" . $_str_status . "') NOT NULL COMMENT '状态'",
-            "user_note"             => "varchar(30) NOT NULL COMMENT '备注'",
+            "user_note"             => "varchar(30) COMMENT '备注'",
             "user_time"             => "int NOT NULL COMMENT '创建时间'",
             "user_time_login"       => "int NOT NULL COMMENT '登录时间'",
-            "user_ip"               => "varchar(15) NOT NULL COMMENT '最后 IP 地址'",
-            "user_access_token"     => "char(32) NOT NULL COMMENT '访问口令'",
-            "user_access_expire"    => "int NOT NULL COMMENT '访问过期时间'",
-            "user_refresh_token"    => "char(32) NOT NULL COMMENT '刷新口令'",
-            "user_refresh_expire"   => "int NOT NULL COMMENT '刷新过期时间'",
+            "user_ip"               => "varchar(15) COMMENT '最后 IP 地址'",
+            "user_access_token"     => "char(32) COMMENT '访问口令'",
+            "user_access_expire"    => "int COMMENT '访问过期时间'",
+            "user_refresh_token"    => "char(32) COMMENT '刷新口令'",
+            "user_refresh_expire"   => "int COMMENT '刷新过期时间'",
             "user_crypt_type"       => "tinyint(1) NOT NULL COMMENT '加密类型'",
         );
 
         for ($_iii = 1; $_iii <= 3; $_iii++) {
-            $_arr_userCreate["user_sec_ques_" . $_iii] = "varchar(300) NOT NULL COMMENT '密保问题 " . $_iii . "'";
-            $_arr_userCreate["user_sec_answ_" . $_iii] = "varchar(32) NOT NULL COMMENT '密保答案 " . $_iii . "'";
+            $_arr_userCreate["user_sec_ques_" . $_iii] = "varchar(300) COMMENT '密保问题 " . $_iii . "'";
+            $_arr_userCreate["user_sec_answ_" . $_iii] = "varchar(32) COMMENT '密保答案 " . $_iii . "'";
         }
 
         $_num_mysql = $this->obj_db->create_table(BG_DB_TABLE . "user", $_arr_userCreate, "user_id", "用户");
