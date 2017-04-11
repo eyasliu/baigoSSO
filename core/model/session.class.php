@@ -53,7 +53,10 @@ class MODEL_SESSION {
      */
     function mdl_open($str_savePath, $str_ssinName) {
         // get session-lifetime
-        $this->lifeTime = get_cfg_var("session.gc_maxlifetime"); //从 php.ini 读取 session 生存时间
+        $this->lifeTime = BG_DEFAULT_SESSION * 1000;
+        if($this->lifeTime < 10) {
+            $this->lifeTime = get_cfg_var("session.gc_maxlifetime"); //从 php.ini 读取 session 生存时间 
+        }
         // open database-connection
         /*$dbHandle       = @mysql_connect("server","user","password");
         $dbSel          = @mysql_select_db("database",$dbHandle);
