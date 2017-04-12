@@ -153,7 +153,6 @@ class MODEL_ADMIN {
      * @return void
      */
     function mdl_submit($arr_adminSubmit = array()) {
-
         $_arr_adminRow  = $this->mdl_read($arr_adminSubmit["admin_id"]);
 
         $_arr_adminData = array();
@@ -186,6 +185,9 @@ class MODEL_ADMIN {
             $_arr_adminData["admin_allow"] = $arr_adminSubmit["admin_allow"];
         } else if (isset($this->adminInput["admin_allow"])) {
             $_arr_adminData["admin_allow"] = $this->adminInput["admin_allow"];
+        }
+        if(fn_isEmpty(isset($_arr_adminData["admin_allow"]))){
+            $_arr_adminData["admin_allow"] = '';
         }
 
         if ($_arr_adminRow["rcode"] == "x020102") {
